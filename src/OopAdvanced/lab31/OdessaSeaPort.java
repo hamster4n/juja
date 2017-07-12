@@ -1,6 +1,5 @@
 package OopAdvanced.lab31;
 
-import java.util.Arrays;
 
 /**
  * Created by hamster on 12.07.2017.
@@ -26,21 +25,23 @@ public class OdessaSeaPort implements SeaPortQueue {
 
     @Override
     public int removeShipFromBeginQueue() {
-        if (indexShipInPort == -1) {
+        if (indexShipInPort == NO_SHIP_IN_ARRAY) {
             return -1;
         } else {
-            indexShipInPort--;
             for (int i = 1; i < LENGTH_QUEUE_SHIP; i++) {
                 arrayShip[i-1] = arrayShip[i];
             }
+            arrayShip[indexShipInPort] = null;
+            indexShipInPort--;
             return 1;
         }
     }
 
     @Override
     public String printQueueShip() {
+
         String result = "";
-        if (indexShipInPort == -1) {
+        if (indexShipInPort == NO_SHIP_IN_ARRAY) {
             return "QueueEmpty";
         } else {
             for (int i = 0; i < indexShipInPort + 1 ; i++) {
